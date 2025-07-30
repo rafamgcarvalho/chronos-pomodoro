@@ -3,6 +3,7 @@ import {Container} from './components/Container/Container';
 // import { Heading } from './components/Heading/Heading';
 import {Menu} from './components/Menu/Menu';
 import {Logo} from './components/Logo/Logo';
+import {Footer} from './components/Footer/Footer';
 import {Cycles} from './components/Cycles/Index';
 import {CountDown} from './components/CountDown/CountDown';
 import {DefaultInput} from './components/DefaultInput/DefaultInput';
@@ -46,7 +47,9 @@ export function App() {
                 </form>
             </Container>
 
-            <Container>Apenas</Container>
+            <Container>
+                <Footer></Footer>
+            </Container>
         </>
     )
 }
