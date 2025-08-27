@@ -1,6 +1,6 @@
 import type { TaskModel } from "./TaskModel"
 
-export type TaskStatemodel = {
+export type TaskStateModel = {
     tasks: TaskModel[];
     secondsRemaining: number;
     formattedSecondsRemaining: string;
