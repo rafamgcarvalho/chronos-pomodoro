@@ -9,6 +9,7 @@ import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/TaskActions";
 import { Tips } from "../Tips/Tips";
+import { ShowMessage } from "../../adapters/showMessage";
 // import { formatSecondsToMinutes } from "../../utils/formatSecondsToMinutes";
 
 export function MainForm() {
@@ -21,13 +22,14 @@ export function MainForm() {
 
     function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        ShowMessage.dismiss();
 
         if (taskNameInput.current === null) return;
 
         const taskName = taskNameInput.current.value.trim();
 
         if (!taskName) {
-            alert('Digite o nome da tarefa');
+            ShowMessage.warn('Digite o nome da tarefa');
 
             return;
         }
@@ -43,9 +45,13 @@ export function MainForm() {
         };
 
         dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+
+        ShowMessage.sucess('Tarefa Iniciada');
     }
 
     function handleInterruptTask() {
+        ShowMessage.dismiss();
+        ShowMessage.error('Tarefa Interrompida!')
         dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
     }
 
