@@ -4,16 +4,21 @@ import { DefaultButton } from "../../components/DefaultButton/DefaultButton";
 import { DefaultInput } from "../../components/DefaultInput/DefaultInput";
 import { Heading } from "../../components/Heading/Heading";
 import { MainTemplate } from "../../template/MainTemplate/Index";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTaskContext } from "../../contexts/TaskContext/UseTaskContext";
 import { ShowMessage } from "../../adapters/showMessage";
+import { TaskActionTypes } from "../../contexts/TaskContext/TaskActions";
 
 
 export function Settings() {
-    const {state} = useTaskContext();
+    const { state, dispatch } = useTaskContext();
     const workTimeInput = useRef<HTMLInputElement>(null);
     const shortBreakTimeInput = useRef<HTMLInputElement>(null);
     const longBreakTimeInput = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        document.title = 'Configurações - Chronos Pomodoro'
+      }, []);
 
     function handleSaveSettings(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -22,32 +27,41 @@ export function Settings() {
 
         const formErrors = [];
 
-        const workTimeValue = Number(workTimeInput.current?.value);
-        const shortBreakTimeValue = Number(shortBreakTimeInput.current?.value);
-        const longBreakTimeValue = Number(longBreakTimeInput.current?.value);
+        const workTime = Number(workTimeInput.current?.value);
+        const shortBreakTime = Number(shortBreakTimeInput.current?.value);
+        const longBreakTime = Number(longBreakTimeInput.current?.value);
 
-        if(isNaN(workTimeValue) || isNaN(shortBreakTimeValue) || isNaN(longBreakTimeValue)) {
+        if (isNaN(workTime) || isNaN(shortBreakTime) || isNaN(longBreakTime)) {
             formErrors.push('Digite apenas números para todos os campos');
         }
 
-        if(workTimeValue < 1 || workTimeValue > 99) {
+        if (workTime < 1 || workTime > 99) {
             formErrors.push('Digite valores entre 1 e 99 para foco');
         }
 
-        if(shortBreakTimeValue < 1 || shortBreakTimeValue > 30) {
+        if (shortBreakTime < 1 || shortBreakTime > 30) {
             formErrors.push('Digite valores entre 1 e 30 para descanso curto');
         }
 
-        if(longBreakTimeValue < 1 || longBreakTimeValue > 60) {
+        if (longBreakTime < 1 || longBreakTime > 60) {
             formErrors.push('Digite valores entre 1 e 60 para descanso longo');
         }
 
-        if(formErrors.length > 0) {
+        if (formErrors.length > 0) {
             formErrors.forEach(error => {
                 ShowMessage.error(error);
             });
             return;
         }
+
+        dispatch({
+            type: TaskActionTypes.CHANGE_SETTINGS, payload: {
+                workTime,
+                shortBreakTime,
+                longBreakTime,
+            }
+        });
+        ShowMessage.sucess('Configurações salvas');
     }
 
     return (

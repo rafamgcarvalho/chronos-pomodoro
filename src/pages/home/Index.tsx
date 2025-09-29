@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Container } from "../../components/Container/Container";
 import { CountDown } from "../../components/CountDown/CountDown";
 import { MainForm } from "../../components/MainForm/Index";
@@ -5,6 +6,10 @@ import { MainTemplate } from "../../template/MainTemplate/Index";
 
 
 export function Home() {
+    useEffect(() => {
+        document.title = 'Chronos Pomodoro'
+      }, []);
+
     return (
         <MainTemplate>
             <Container>
