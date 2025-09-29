@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router"
 import { AboutPomodoro } from "../../pages/AboutPomodoro/Index"
 import { NotFound } from "../../pages/NotFound/Index"
-import { Home } from "../../pages/home/Index"
+import { Home } from "../../pages/Home/Index"
 import { useEffect } from "react";
 import { History } from "../../pages/History/Index";
 
