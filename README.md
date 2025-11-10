@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# ⏱️ Chronos Pomodoro  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Chronos Pomodoro** é um aplicativo desenvolvido em **React + TypeScript** que aplica a **técnica Pomodoro** para melhorar o foco e a produtividade.  
+Com uma interface moderna e intuitiva, o usuário pode controlar seus ciclos de trabalho e descanso, acompanhar o histórico de sessões e personalizar o tempo dos intervalos.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias utilizadas  
 
-## Expanding the ESLint configuration
+🌀 **React** — criação da interface dinâmica e reativa  
+⚡ **Vite** — ambiente de build rápido e leve  
+🧠 **TypeScript** — tipagem estática para um código mais seguro  
+📅 **date-fns** — manipulação simples de datas e tempos  
+🎉 **React Toastify** — exibição de notificações elegantes  
+🧭 **React Router** — navegação entre telas  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 🧭 Estrutura do Projeto  
+```bash
+chronos-pomodoro/
+├── src/
+│ ├── assets/ # Ícones e imagens
+│ ├── components/ # Componentes reutilizáveis
+│ ├── pages/ # Telas principais (Home, Histórico, Configurações)
+│ ├── hooks/ # Hooks personalizados
+│ ├── contexts/ # Contextos globais
+│ ├── App.tsx # Componente raiz
+│ └── main.tsx # Ponto de entrada do app
+└── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧩 Funcionalidades  
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- Início, pausa e reinício de ciclos de trabalho  
+- Contagem automática de intervalos curtos e longos  
+- Exibição do histórico de pomodoros concluídos  
+- Personalização de tempos de foco e descanso  
+- Modo escuro para maior conforto visual  
+
+---
+
+## ⚙️ Como executar o projeto  
+
+Clone o repositório:
+```bash
+git clone https://github.com/rafamgcarvalho/chronos-pomodoro.git
+cd chronos-pomodoro
 ```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o servidor de desenvolvimento
+
+```bash
+npm run dev
+```
+
+A aplicação será executada em:
+
+```arduino
+http://localhost:5173
+```
+
+## 💡 Diferenciais e possíveis melhorias
+- 🎨 Interface moderna e responsiva
+- 🧩 Código modular e de fácil manutenção
+- 🔔 Notificações de fim de ciclo
+  
+## 🔧 Possíveis melhorias futuras:
+- Integração com banco de dados local
+- Estatísticas detalhadas de produtividade
+- Integração com apps de tarefas
